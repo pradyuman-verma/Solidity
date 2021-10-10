@@ -1,0 +1,6 @@
+# special file where brownie looks for information about where you're going to build,
+# where yoiu're going to deploy and where you're going to grab things.
+
+dotenv: .env
+wallets:
+  from_key: ${PRIVATE_KEY}
