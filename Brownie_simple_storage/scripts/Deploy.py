@@ -1,4 +1,4 @@
-# brownie makes life easy
+# brownie makes life easy, thats why we use it
 # it automatically compiles code.
 # it automatically dumps json to a file in build/contracts
 # it also gives us abi and bytecode.
