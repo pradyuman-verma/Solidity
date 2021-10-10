@@ -1,18 +1,18 @@
-# brownie makes life easy, thats why we use it
+# brownie makes life easy, thats why we use it.
 # it automatically compiles code.
-# it automatically dumps json to a file in build/contracts
+# it automatically dumps json to a file in build/contracts.
 # it also gives us abi and bytecode.
-# it aumatically launches local blockchain - ganache-cli
+# it aumatically launches local blockchain - ganache-cli.
 
 # to get address and private, brownie has a accounts package to help with that
-from brownie import accounts, config, SimpleStorage
+from brownie import accounts, config, SimpleStorage, network
 import os
 
 
 def deploy_simple_storage():
     # 1. As ganache-cli spins up 10 accounts to us.
     # only works for ganache-cli
-    account = accounts[0]
+    account = get_network()
 
     # 2. For manually added account - it will ask for password in cli (most secure way)
     # account = accounts.load("Prady001")
@@ -36,6 +36,13 @@ def deploy_simple_storage():
     transaction.wait(1)
     updated_value = simple_storage.retrive()
     print(updated_value)
+
+
+def get_network():
+    if network.show_active == "development":
+        return accounts[0]
+    else:
+        return accounts.add(config["wallets"]["from_key"])
 
 
 def main():
